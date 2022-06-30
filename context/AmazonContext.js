@@ -40,15 +40,18 @@ export const AmazonProvider = ({ children }) => {
     isLoading: assetsDataIsLoading,
   } = useMoralisQuery('Assets')
 
-  useEffect(async () => {
-    console.log(assetsData)
+  const enableWeb = async () => {
     await enableWeb3()
     await getAssets()
     await getOwnedAssets()
+  }
+  useEffect(() => {
+    console.log(assetsData)
+    enableWeb();
   }, [userData, assetsData, assetsDataIsLoading, userDataIsLoading])
 
-  useEffect(async () => {
-    if (!isWeb3Enabled) {
+  const listenUpdate = async () => {
+    if (!isWeb3Enabled) { 
       await enableWeb3()
     }
     await listenToUpdates()
@@ -66,6 +69,10 @@ export const AmazonProvider = ({ children }) => {
       setFormattedAccount('')
       setBalance('')
     }
+  }
+
+  useEffect(() => {
+    listenUpdate();
   }, [
     isWeb3Enabled,
     isAuthenticated,
