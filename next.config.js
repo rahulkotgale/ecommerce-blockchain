@@ -6,6 +6,7 @@
       'brand.assets.adidas.com',
       'media0.giphy.com',
       'avatars.dicebear.com',
+      'media.giphy.com',
       'media1.giphy.com',
       'media3.giphy.com',
       'media2.giphy.com',

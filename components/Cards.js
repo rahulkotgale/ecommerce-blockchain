@@ -9,6 +9,7 @@ const Cards = () => {
     cards: `flex items-center  flex-wrap gap-[80px]`,
   }
   const { assets } = useContext(AmazonContext)
+  console.log(assets)
 
   return (
     <div className={styles.container}>
